@@ -6,7 +6,8 @@ class ViewController: UIViewController {
       view.backgroundColor = UIColor.white;
       
       initialLabel();
-      button()
+      button();
+      table();
    }
    
    private func initialLabel() -> Void {
@@ -34,5 +35,30 @@ class ViewController: UIViewController {
       submit.setTitleColor(UIColor.white, for: .normal)
       
       view.addSubview(submit)
+   }
+   
+   private func table() -> Void {
+      let table = UITableView(frame: CGRect(x: 100, y: 350, width: 200, height: 400));
+      table.backgroundColor = UIColor.green;
+      table.rowHeight = 30;
+      table.dataSource = self;
+      table.register(UITableViewCell.self, forCellReuseIdentifier: "Table");
+      
+      view.addSubview(table);
+   }
+}
+
+extension ViewController : UITableViewDataSource {
+   public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return 5;
+   }
+   
+   public func tableView(_ tableView: UITableView, cellForRowAt IndexPath: IndexPath) -> UITableViewCell {
+//      let cell = UITableViewCell();
+      let cell = tableView.dequeueReusableCell(withIdentifier: "Table")!;
+      cell.textLabel?.text = "Hello world";
+      cell.backgroundColor = .red
+      
+      return cell;
    }
 }
