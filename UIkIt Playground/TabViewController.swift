@@ -10,7 +10,7 @@ import UIKit;
 
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
-        self.viewDidLoad();
+        self.viewDidLoad();                
         
         let home: ViewController = ViewController();
         home.title = "Home";
